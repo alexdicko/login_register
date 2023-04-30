@@ -58,7 +58,7 @@ $userInput = $_POST["user"];
 $passInput = $_POST["pass"];
 
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname); // CONNECT
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -66,18 +66,11 @@ if ($conn->connect_error) {
 
 
 
-// $sql = "INSERT INTO users (username, password, email)
-// VALUES ('John', 'Doe', 'john@example.com')";
 
-// if ($conn->query($sql) === TRUE) {
-//   echo "New record created successfully";
-// } else {
-//   echo "Error: " . $sql . "<br>" . $conn->error;
-// }
 
-$query = "SELECT * FROM users WHERE username = '$userInput' AND password = '$passInput'";
+$query = "SELECT * FROM users WHERE username = '$userInput' AND password = '$passInput'"; // checks users table to see if username and password are there
 
-$result = $conn->query($query);
+$result = $conn->query($query); 
 
 if ($result) {
   if (mysqli_num_rows($result) > 0) {
@@ -93,8 +86,8 @@ if ($result) {
                                 dismissible: true
                               });                
                             
-                            </script>
-                            ';
+                            </script> 
+                            '; // notifications using notyf.js not currently working, will fix 
   } else {
       echo 'not found';
       
@@ -104,7 +97,7 @@ if ($result) {
 }
 
 
-$conn->close();
+$conn->close(); // close connection
 
 
 

@@ -56,9 +56,10 @@ $password = "";
 $dbname = "test";
 $userInput = $_POST["user"];
 $passInput = $_POST["pass"];
+$emailInput = $-POST["email"]
 
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname); // again connect to datase
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -66,12 +67,12 @@ if ($conn->connect_error) {
 
 
 
-$sql = "INSERT INTO users (username, password, email)
-VALUES ('John', 'Doe', 'john@example.com')";
+$sql = "INSERT INTO users (username, password, email) 
+VALUES ('$userInput', '$passInput', '$emailInput')"; // in users table, inserts username as inputted username, and so on
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
-  echo "<meta http-equiv='Refresh' Content='2; url=login.php'>";
+  
 
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
